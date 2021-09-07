@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+        }
+        .small-img,.big-img{
+            width: 400px;
+            height: 400px;
+            float: left;
+            margin-right: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        .small-img img{
+            width: 400px;
+            height: 400px;
+        }
+        .big-img img{
+            width: 800px;
+            height: 800px;
+        }
+        .mosk{
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255,255,255,0.3);
+            position: absolute;
+            top:0;
+            left: 0;
+        }
+        .big-img img{
+            position: absolute;
+            top:0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="small-img">
+        <img src="./img/niu.png">
+        <div class="mosk"></div>
+    </div>
+    <div class="big-img">
+        <img id="b-img" src="./img/niu.png">
+    </div>
+    <script>
+        var smallImg = document.getElementsByClassName("small-img")[0];
+        var oMosk = document.getElementsByClassName("mosk")[0];
+        var bigImg = document.getElementById("b-img");
+        smallImg.onmousemove = function(event){
+            var thisLeft = event.clientX - 100;
+            var thisTop = event.clientY - 100;
+
+            if(thisLeft<=0){
+                thisLeft = 0;
+            }
+            if(thisTop<=0){
+                thisTop = 0;
+            }
+            if(thisLeft>=200){
+                thisLeft = 200;
+            }
+            if(thisTop>=200){
+                thisTop = 200;
+            }
+
+            oMosk.style.left = thisLeft  + "px";
+            oMosk.style.top = thisTop + "px";
+            bigImg.style.left = (-thisLeft*2)+"px";
+            bigImg.style.top = (-thisTop*2)+"px";
+
+        }
+    </script>
+</body>
+</html>

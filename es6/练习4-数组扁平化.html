@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [1,2,[7,[11,12,13],8,9],4,5,6];
+        // arr = [1,2,7,11,12,13,8,9,4,5,6]
+        // 方法一
+        // function flatten(arr){
+        //     let newArr = arr.join(",").split(",")
+        //     newArr = newArr.map(function(val,key,arr){
+        //         return Number.parseInt(val)
+        //     })
+        //     console.log(newArr);
+        // }
+        // flatten(arr)
+
+        // 方法二
+        // function flatten(arr){
+        //     let res = [];
+        //     arr.map(function(val){
+        //         if(Array.isArray(val)){         判断变量数据类型是否为数组
+        //             res = res.concat(flatten(val))
+        //         }else{
+        //             res.push(val)
+        //         }
+        //     })
+        //     return res;
+        // }
+        // console.log(flatten(arr));
+
+        //方法三 
+        // console.log(arr.flat(Infinity));      //flat为数组的降维函数，参数为降低的维数，Infinity为无限降维
+    </script>
+</body>
+</html>
