@@ -15,6 +15,7 @@
             text-align: center;
             line-height: 200px;
         }
+
         #content2 {
             height: 200px;
             background-color: gray;
@@ -22,7 +23,7 @@
             color: white;
             text-align: center;
             line-height: 200px;
-            margin-top : 20px;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -33,38 +34,43 @@
     <script>
         let content1 = document.getElementById('content1');
         let content2 = document.getElementById('content2');
+        //函数防抖
         let num1 = 1;
-        function count1(){
+        function count1() {
             this.innerHTML = num1++;
         }
-        function debounce(fn,wait){
+        function debounce(fn, wait) {
             let timer = null;
-            return function(){
+            return function () {
                 let context = this;
-                if(timer){
+                if (timer) {
                     clearTimeout(timer);
-                } 
-                timer = setTimeout(function(){
+                }
+                timer = setTimeout(function () {
                     fn.apply(context);
-                },wait)
+                }, wait)
             }
         }
-        content1.onmousemove = debounce(count1,1000);
+        content1.onmousemove = debounce(count1, 1000);
 
+        //函数节流
         let num2 = 1;
-        function count2(){
+        function count2() {
             this.innerHTML = num2++;
         }
-        function jieliu(fn,wait){
+        function throttle(fn, wait) {
             let timer = null;
-            return function(){
+            return function (...args) {
                 let context = this;
-                timer = setTimeout(function(){
-
-                },wait)
+                if (!timer) {
+                    timer = setTimeout(function () {
+                        fn.apply(context,args);
+                        timer = null;
+                    }, wait)
+                }
             }
         }
-        content2.onmouse = jieliu(count2,1000);
+        content2.onmousemove = throttle(count2, 1000);
     </script>
 </body>
 
