@@ -41,7 +41,7 @@
 
     <!--对数组进行去重操作-->
     <script>
-        // let arr = [1, 2, 3, 3, 2, 2, 2, 6, 7];
+        let arr = [1, 2, 3, 3, 2, 2, 2, 6, 7];
 
         //方法一
         // function unique(arr) {
@@ -97,7 +97,7 @@
         //         }
         //     }
         //     console.log(obj);
-        //     console.log(Object.keys(obj));
+        //     console.log(Object.keys(obj));       //获取包含该对象所有可枚举的属性名的数组
         // }
         // unique(arr); 
 
@@ -115,6 +115,13 @@
         //     return newArr;
         // }
         // console.log(unique(arr));
+
+
+        //方法六
+        // function unique(arr){
+        //     console.log(Array.from(new Set(arr)));
+        // }
+        // unique(arr);
     </script>
 
     <!--手动实现call()、bind()-->
