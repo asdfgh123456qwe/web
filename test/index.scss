@@ -1,0 +1,33 @@
+$color:red;
+.header{
+    &-test{
+        color: $color;
+    }
+    &:hover{
+        color: $color;
+    }
+    border : {
+        left: 1px solid $color;
+        top: 1px solid $color;
+    }
+}
+
+$keyname : "color";
+.div3{
+    #{$keyname}: $color;
+}
+
+@mixin foo($num,$col:yellow) {
+    width: $num;
+    height: $num;
+    background-color: $col;
+}
+.div4{
+    // @include foo(100px,blue);
+    @include foo($col:pink,$num:300px);
+    padding: 10px;
+}
+.div5{
+    @include foo(200px,black);
+    margin: 10px;
+}
