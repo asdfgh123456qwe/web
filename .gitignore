@@ -1,2 +1,1 @@
-/es6/babel/node_modules
-/myWebpack/node_modules
+**/node_modules
