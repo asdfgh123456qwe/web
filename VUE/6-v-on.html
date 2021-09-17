@@ -9,21 +9,22 @@
 </head>
 <body>
     <div id="app">
-        <div>
-            <div v-text="str"></div>
-            <div v-html="str2"></div>
-        </div>
+        <h1>{{num}}</h1>
+        <button v-on:click="clickHandle">button</button>
     </div>
     <script>
-        let app = new Vue({          //挂载点
-            el : "#app",
-            data : {
-                str : "hello world",
-                str2 : "<h1>你好</h1>"
+        let app = new Vue({
+            el:"#app",
+            data:{
+                num:0
+            },
+            methods:{
+                clickHandle(i=3){
+                    // console.log(this,num);
+                    this.num+=3;
+                }
             }
         })
-        console.log(app);
-        app.str = "hello vip2";
     </script>
 </body>
 </html>

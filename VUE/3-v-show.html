@@ -9,21 +9,21 @@
 </head>
 <body>
     <div id="app">
-        <div>
-            <div v-text="str"></div>
-            <div v-html="str2"></div>
-        </div>
+        <ul>
+            <li>衣服：<span v-show="goods1!=0">{{ goods1 }}</span><span v-show = "goods1==0">售空</span></li>
+            <li>帽子：{{ goods2 }}</li>
+            <li>裤子：{{ goods3 }}</li>
+        </ul>
     </div>
     <script>
-        let app = new Vue({          //挂载点
-            el : "#app",
-            data : {
-                str : "hello world",
-                str2 : "<h1>你好</h1>"
+        new Vue({
+            el:"#app",
+            data:{
+                goods1:10,
+                goods2:20,
+                goods3:30
             }
         })
-        console.log(app);
-        app.str = "hello vip2";
     </script>
 </body>
 </html>
