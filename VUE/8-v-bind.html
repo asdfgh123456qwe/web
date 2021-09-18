@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        .active{
+            color: red;
+        }
+        .active2{
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- <div v-bind:class="class1">hello world</div> -->
+        <!-- <div v-bind:class="{active:class2}">hello world</div> -->
+        <!-- <div v-bind:class="['active2',class1]">hello world</div> -->
+        <!-- <div v-bind:class="'active2 '+class1">hello world</div> -->
+        <div :data-id="class1" :style="{color:color1,fontSize:fSize}">11</div>
+        <button @click="clickHandle">button</button>
+    </div>
+    <script>
+        new Vue({
+            el:"#app", 
+            data:{
+                class1:"active",
+                class2:false,
+                color1:'red',
+                fSize:'40px'
+            },
+            methods:{
+                clickHandle(){
+                    // this.class1 = "active";
+                    this.class2 = true;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -10,7 +10,7 @@
 <body>
     <div id="app">
         <h1>{{num}}</h1>
-        <button v-on:click="clickHandle">button</button>
+        <button v-on:click.once="clickHandle(4)">button</button>
     </div>
     <script>
         let app = new Vue({
@@ -21,7 +21,7 @@
             methods:{
                 clickHandle(i=3){
                     // console.log(this,num);
-                    this.num+=3;
+                    this.num += i;
                 }
             }
         })
