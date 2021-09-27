@@ -17,6 +17,9 @@
         .active{
             background-color: #ddd;
         }
+        [v-cloak]{
+            display: none;
+        }
     </style>
 </head>
 
@@ -59,7 +62,7 @@
                         <th scope="col">操作</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody v-cloak>
                     <tr :class="{active:item.isChecked}" v-for="item in dataList" @click="item.isChecked = !item.isChecked">
                         <td scope="row">
                             <input type="checkbox" name="" id="" :checked="item.isChecked">
