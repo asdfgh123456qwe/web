@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,29 +8,31 @@
     <title>Document</title>
     <script src="./js/vue.js"></script>
 </head>
+
 <body>
     <div id="app">
-        <mytest v-bind:username="uname"></mytest>
+        <mytest></mytest>
     </div>
-    <template id="temp1">
+    <template id="tem1">
         <div>
-            <h1>你好:{{username}}</h1>
+            <h1>{{num}}</h1>
         </div>
     </template>
-    
     <script>
         new Vue({
-            el:"#app",
-            data:{
-                uname:"小刚"
-            },
-            components:{
-                mytest:{
-                    props:['username'],
-                    template:"#temp1"
+            el: "#app",
+            components: {
+                mytest: {
+                    template: "#tem1",
+                    data() {
+                        return {
+                            num:10
+                        }
+                    }
                 }
             }
         })
     </script>
 </body>
+
 </html>
