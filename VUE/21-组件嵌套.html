@@ -11,28 +11,28 @@
 
 <body>
     <div id="app">
-        <mytest></mytest>
+        <com1></com1>
     </div>
     <template id="tem1">
         <div>
-            <h1>{{num}}</h1>
-            <button @click="addHandle">add</button>
+            <com2></com2>
+            <h1>子组件1</h1>
+        </div>
+    </template>
+    <template id="tem2">
+        <div>
+            <h1>子组件2</h1>
         </div>
     </template>
     <script>
         new Vue({
             el: "#app",
             components: {
-                mytest: {
+                com1: {
                     template: "#tem1",
-                    data(){
-                        return {
-                            num:10
-                        }
-                    },
-                    methods: {
-                        addHandle() {
-                            this.num++;
+                    components: {
+                        com2: {
+                            template: "#tem2"
                         }
                     }
                 }
