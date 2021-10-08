@@ -14,10 +14,12 @@
         .container {
             padding: 50px 0;
         }
-        .active{
+
+        .active {
             background-color: #ddd;
         }
-        [v-cloak]{
+
+        [v-cloak] {
             display: none;
         }
     </style>
@@ -29,7 +31,8 @@
             <div class="form-row align-items-center">
                 <div class="col-auto">
                     <label class="sr-only" for="inlineFormInput">Name</label>
-                    <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="请输入搜索内容" v-model="searchText">
+                    <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="请输入搜索内容"
+                        v-model="searchText">
                 </div>
                 <div class="col-auto">
                     <button type="submit" class="btn btn-primary mb-2" @click.prevent="searchHandle()">搜索</button>
@@ -39,12 +42,14 @@
         <form>
             <div class="form-row align-items-center">
                 <div class="col-auto">
-                    <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="请输入商品名称" v-model="goodsTitle">
+                    <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="请输入商品名称"
+                        v-model="goodsTitle">
                 </div>
                 <div class="col-auto">
                     <label class="sr-only" for="inlineFormInputGroup">Username</label>
                     <div class="input-group mb-2">
-                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="请输入商品价格" v-model="goodsPrice">
+                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="请输入商品价格"
+                            v-model="goodsPrice">
                     </div>
                 </div>
                 <div class="col-auto">
@@ -63,19 +68,21 @@
                     </tr>
                 </thead>
                 <tbody v-cloak>
-                    <tr :class="{active:item.isChecked}" v-for="item in dataList" @click="item.isChecked = !item.isChecked">
+                    <tr :class="{active:item.isChecked}" v-for="item in dataList"
+                        @click="item.isChecked = !item.isChecked">
                         <td scope="row">
                             <input type="checkbox" name="" id="" :checked="item.isChecked">
-                        </th>
+                            </th>
                         <td>{{item.title}}</td>
                         <td>{{item.price}}</td>
                         <td>
-                            <button type="button" class="btn btn-primary btn-sm" @click.stop="delHandle(item.id)">删除</button>
+                            <button type="button" class="btn btn-primary btn-sm"
+                                @click.stop="delHandle(item.id)">删除</button>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">总价</td>
-                        <td>0</td>
+                        <td>{{sum}}</td>
                         <td>
                             <button type="button" class="btn btn-primary btn-sm" @click="delCheck">删除选中</button>
                         </td>
@@ -84,60 +91,71 @@
             </table>
         </div>
     </div>
-    
+
     <script>
         new Vue({
-            el:"#app",
-            data:{
-                goodsTitle:"",
-                goodsPrice:"",
-                searchText:"",
-                dataList:[
+            el: "#app",
+            data: {
+                goodsTitle: "",
+                goodsPrice: "",
+                searchText: "",
+                dataList: [
                     {
-                        id:1001,
-                        title:"衣服",
-                        price:100,
-                        isChecked:false
+                        id: 1001,
+                        title: "衣服",
+                        price: 100,
+                        isChecked: false
                     },
                     {
-                        id:1002,
-                        title:"裤子",
-                        price:200,
-                        isChecked:false
+                        id: 1002,
+                        title: "裤子",
+                        price: 200,
+                        isChecked: false
                     },
                     {
-                        id:1003,
-                        title:"帽子",
-                        price:10,
-                        isChecked:false
+                        id: 1003,
+                        title: "帽子",
+                        price: 10,
+                        isChecked: false
                     }
                 ]
             },
-            methods:{
+            computed: {
+                sum(){
+                    let sumNum = 0;
+                    this.dataList.map((item)=>{
+                        if(item.isChecked){
+                            sumNum += item.price;
+                        }
+                    })
+                    return sumNum;
+                }
+            },
+            methods: {
                 //添加数据
-                addHandle(){
+                addHandle() {
                     this.dataList.push({
-                        id:this.dataList.slice(-1)[0].id+1,      //slice参数为负数时，可以切片得到数组的最后一个元素组成的数组
-                        title:this.goodsTitle,
-                        price:this.goodsPrice,
-                        isChecked:false
+                        id: this.dataList.slice(-1)[0].id + 1,      //slice参数为负数时，可以切片得到数组的最后一个元素组成的数组
+                        title: this.goodsTitle,
+                        price: this.goodsPrice,
+                        isChecked: false
                     });
-                    this.goodsTitle="";
-                    this.goodsPrice="";
+                    this.goodsTitle = "";
+                    this.goodsPrice = "";
                 },
                 //删除单条数据
-                delHandle(id){
-                    let newArr = this.dataList.filter(function(item,key,arr){
-                        if(item.id != id){
+                delHandle(id) {
+                    let newArr = this.dataList.filter(function (item, key, arr) {
+                        if (item.id != id) {
                             return true;
                         }
                     })
                     this.dataList = newArr;
                 },
                 //搜索
-                searchHandle(){
-                    let newArr = this.dataList.filter((item,key)=>{
-                        if(item.title.includes(this.searchText)){
+                searchHandle() {
+                    let newArr = this.dataList.filter((item, key) => {
+                        if (item.title.includes(this.searchText)) {
                             return item;
                         }
                     })
@@ -148,13 +166,13 @@
                 //     item.isChecked = !item.isChecked;
                 // }
                 //删除选中
-                delCheck(){
-                    let newArr = this.dataList.filter((item)=>{
-                        if(!item.isChecked){
+                delCheck() {
+                    let newArr = this.dataList.filter((item) => {
+                        if (!item.isChecked) {
                             return item;
                         }
                     })
-                    this.dataList=newArr;
+                    this.dataList = newArr;
                 }
             }
         })
