@@ -29,7 +29,7 @@ const routes = [
     path: '/pageone',
     name: 'PageOne',
     beforeEnter: (to, from, next) => {
-      console.log(to,from);
+      // console.log(to,from);
       next();
     },
     component: ()=> import('../views/Page1.vue')
@@ -43,6 +43,10 @@ const routes = [
     name: 'PageThree',
     component: ()=> import('../views/Page3.vue')
   },{
+    path: '/pagefour',
+    name: 'PageFour',
+    component: ()=> import('../views/Page4.vue')
+  },{
     path: '/redirect/:username',
     redirect:'/pagethree/:username'
   },{
@@ -52,7 +56,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes
 })  
