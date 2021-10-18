@@ -46,11 +46,14 @@ const routes = [
     path: '/pagefour',
     name: 'PageFour',
     component: ()=> import('../views/Page4.vue')
-  },
-  {
+  },{
     path: '/pagefive',
     name: 'PageFive',
     component: ()=> import('../views/Page5.vue')
+  },{
+    path:"/tvdetail/:id",
+    name:"Detail",
+    component: ()=>{import("../views/Detail.vue")}
   },{
     path: '/redirect/:username',
     redirect:'/pagethree/:username'
