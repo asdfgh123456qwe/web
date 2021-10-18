@@ -14,6 +14,8 @@
       | <router-link to="/pagethree/小红">页面三</router-link> |
       <router-link to="/pagefour">页面四</router-link> |
       <router-link to="/pagefive">页面五</router-link> |
+      <router-link to="/pagesix">页面六</router-link> |
+      <router-link to="/pageseven">页面七</router-link> |
       <router-link to="/redirect/xiao">重定向</router-link> |
       <router-link to="/detail">别名</router-link> |
       <button @click="linkHandle">button跳转</button>
